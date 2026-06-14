@@ -2,3 +2,9 @@
 # P2-Challenge-2 (Client Side)
 
 > Tuliskan API Docs kamu di sini
+Ini link public dan cms deployment
+https://gc-2-h8-zhbb-p3gb685h2-elshadryans-projects.vercel.app/
+https://gc-2-h8-btt0sc5n7-elshadryans-projects.vercel.app/login
+
+
+Folder CMS dipakai untuk admin dan staff 

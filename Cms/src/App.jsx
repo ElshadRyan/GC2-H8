@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Routes, Route } from "react-router";
 import Footer from './components/Footer';
@@ -13,6 +12,7 @@ import Categories from './view/Categories';
 import CategoryDetails from './view/CategoryDetails';
 import CategoryEdit from './view/CategoryEdit';
 import AddCategory from './view/AddCategory';
+import AddStaff from './view/AddStaff';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +28,7 @@ function App() {
                 <Route path = "/categories" element = {<Categories/>}/>
                 <Route path='/addProduct' element = {<AddProduct/>}/>
                 <Route path='/addCategory' element = {<AddCategory/>}/>
+                <Route path='/addStaff' element = {<AddStaff/>}/>
                 <Route path = "/categories/:id" element = {<CategoryDetails/>}/>
                 <Route path = "/categories/edit/:id" element = {<CategoryEdit/>}/>
                 <Route path = "/details/:id" element = {<Detail/>}/>

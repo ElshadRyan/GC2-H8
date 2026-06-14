@@ -29,6 +29,10 @@ export default function Navbar () {
             <a href="/categories" className="btn btn-ghost">
               Categories
             </a>
+
+            <a href="/addStaff" className="btn btn-ghost">
+              Add Staff
+            </a>
           </div>
 
           {/* Right */}

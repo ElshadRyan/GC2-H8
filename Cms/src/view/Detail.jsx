@@ -2,6 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import Toastify from 'toastify-js'
+import loadingGif from '../assets/loadingUpload.svg'
+
 
 export default function Detail()
 {
@@ -28,7 +30,22 @@ export default function Detail()
                 }})
             setCurrProduct(data.data) 
         } catch (error) {
-            console.log(error);
+            Toastify({
+                text: error.response.data.message,
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "#F87171",
+                    color: "black",
+                    border: "solid #000000",
+                    borderRadius: "8px",
+                    boxShadow: "2px 2px black"
+                },
+            }).showToast();
         }
     }
 
@@ -41,7 +58,7 @@ export default function Detail()
 
             const { data } = await axios.patch(`https://api.p2.gc01aio.foxhub.space/apis/products/products/${currProduct.id}`, formData, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.token}`
+                    Authorization: `Bearer ${localStorage.access_token}`
                 }
             })
 
@@ -125,9 +142,21 @@ export default function Detail()
                         </>
                     ) : (
                         <>
-                            <label className="fa-solid fa-upload fa-2xl m-5 cursor-pointer">
-                                <input type="file" className="hidden" onChange={handleUpload} />
-                            </label>
+                            <div className="relative inline-block">
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                >
+                                    <i className="fa-solid fa-upload mr-2"></i>
+                                    Upload Image
+                                </button>
+
+                                <input
+                                    type="file"
+                                    onChange={handleUpload}
+                                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                />
+                            </div>
                         </>
                     )}
 

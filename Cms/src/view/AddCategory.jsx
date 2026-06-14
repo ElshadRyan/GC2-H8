@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router";
+import Toastify from "toastify-js"
 
 export default function AddCategory()
 {
@@ -15,8 +16,39 @@ export default function AddCategory()
                     Authorization: `Bearer ${localStorage.access_token}`
                 }})
                 navigate("/categories")
+                Toastify({
+                                text: data.message,
+                                duration: 3000,
+                                newWindow: true,
+                                close: true,
+                                gravity: "bottom", // `top` or `bottom`
+                                position: "right", // `left`, `center` or `right`
+                                stopOnFocus: true, // Prevents dismissing of toast on hover
+                                style: {
+                                    background: "#34D399",
+                                    color: "black",
+                                    border: "solid #000000",
+                                    borderRadius: "8px",
+                                    boxShadow: "2px 2px black"
+                                },
+                            }).showToast();
         } catch (error) {
-            console.log(error.response);
+            Toastify({
+                                            text: error.response.data.message,
+                                            duration: 3000,
+                                            newWindow: true,
+                                            close: true,
+                                            gravity: "bottom", // `top` or `bottom`
+                                            position: "right", // `left`, `center` or `right`
+                                            stopOnFocus: true, // Prevents dismissing of toast on hover
+                                            style: {
+                                                background: "#F87171",
+                                                color: "black",
+                                                border: "solid #000000",
+                                                borderRadius: "8px",
+                                                boxShadow: "2px 2px black"
+                                            },
+                                        }).showToast();
         }
     }
 

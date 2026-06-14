@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Toastify from "toastify-js"
 
 export default function Categories(){
     const [categories, setCategories] = useState([])
@@ -14,7 +15,22 @@ export default function Categories(){
             })
             setCategories(data.data)
         } catch (error) {
-         console.log(error.response);   
+         Toastify({
+                                         text: error.response.data.message,
+                                         duration: 3000,
+                                         newWindow: true,
+                                         close: true,
+                                         gravity: "bottom", // `top` or `bottom`
+                                         position: "right", // `left`, `center` or `right`
+                                         stopOnFocus: true, // Prevents dismissing of toast on hover
+                                         style: {
+                                             background: "#F87171",
+                                             color: "black",
+                                             border: "solid #000000",
+                                             borderRadius: "8px",
+                                             boxShadow: "2px 2px black"
+                                         },
+                                     }).showToast();
         }finally{
             setLoading(false)
         }
